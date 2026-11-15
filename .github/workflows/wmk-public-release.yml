@@ -1,0 +1,51 @@
+name: Publicar WMK Film Studio para download
+
+on:
+  push:
+    branches:
+      - wmk/branding-windows-actions
+    paths:
+      - '.github/workflows/wmk-public-release.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar compilacao Windows validada
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p incoming release
+          gh run download 43692986628 \
+            --repo "${{ github.repository }}" \
+            --name WMK-Film-Studio-Windows-x64 \
+            --dir incoming
+          test -s incoming/WMK-Film-Studio-Windows-x64.zip
+          unzip -l incoming/WMK-Film-Studio-Windows-x64.zip
+          cp incoming/WMK-Film-Studio-Windows-x64.zip release/
+          (cd release && sha256sum WMK-Film-Studio-Windows-x64.zip > SHA256SUMS.txt)
+
+      - name: Publicar pre-release para todos
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG=wmk-v0.20.1-estudos.1
+          if gh release view "$TAG" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            echo "Release ja existe; mantendo o download original."
+            exit 0
+          fi
+          gh release create "$TAG" release/WMK-Film-Studio-Windows-x64.zip release/SHA256SUMS.txt \
+            --repo "${{ github.repository }}" \
+            --target "${{ github.sha }}" \
+            --title "WMK Film Studio v0.20.1 — Estudos (Windows x64)" \
+            --prerelease \
+            --notes "Versao experimental de estudos para Windows 64 bits. Pacote ZIP portatil com WMK-Film-Studio.exe e filmcraft-cli.exe. Compilacao GitHub Actions #43692986628 (sucesso), sem assinatura digital. A inicializacao, importacao e exportacao ainda precisam ser testadas em computadores Windows reais. Preserve os arquivos NOTICE, ATTRIBUTION.md e licencas inclusos. Nesta versao a logo oficial WMK ainda nao esta embutida."
