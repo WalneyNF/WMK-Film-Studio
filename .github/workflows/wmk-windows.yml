@@ -12,7 +12,7 @@ on:
       - '.github/workflows/wmk-windows.yml'
       - 'README.md'
       - 'assets/wmk/**'
-      - 'scripts/gerar-icone-wmk.py'
+      - 'scripts/**'
   pull_request:
     branches: [main]
 
@@ -38,6 +38,27 @@ jobs:
         run: python scripts/gerar-icone-wmk.py
       - name: Build release
         run: cargo build --release --locked -p filmcraft -p filmcraft-cli
+      - name: Testar ferramentas WMK Windows
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $base = Join-Path $env:RUNNER_TEMP 'wmk-qa'
+          New-Item -ItemType Directory -Force -Path $base | Out-Null
+          & .\scripts\WMK-Novo-Projeto.ps1 -Nome 'Teste WMK' -Destino $base -Preset 720p
+          $pasta = Join-Path $base 'Teste WMK'
+          if (-not (Test-Path (Join-Path $pasta 'wmk-projeto.json'))) { throw 'Manifesto ausente' }
+          $manifesto = Get-Content (Join-Path $pasta 'wmk-projeto.json') -Raw | ConvertFrom-Json
+          if ($manifesto.largura -ne 1280 -or $manifesto.altura -ne 720) { throw 'Preset invalido' }
+          if (-not (Test-Path (Join-Path $pasta '04-projetos'))) { throw 'Pasta de projetos ausente' }
+          try {
+            & .\scripts\WMK-Novo-Projeto.ps1 -Nome 'Teste WMK' -Destino $base -ErrorAction Stop
+            throw 'Falha: permitiu sobrescrever projeto existente'
+          } catch {
+            if ($_.Exception.Message -like 'Falha: permitiu*') { throw }
+          }
+          & .\scripts\WMK-Diagnostico.ps1 -PastaAplicativo 'target/release' -Saida (Join-Path $base 'diag.json')
+          $diag = Get-Content (Join-Path $base 'diag.json') -Raw | ConvertFrom-Json
+          if (-not $diag.executavelPresente) { throw 'Diagnostico nao identificou o binario' }
       - name: Create ZIP
         shell: pwsh
         run: |

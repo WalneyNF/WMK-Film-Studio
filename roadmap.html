@@ -7,39 +7,79 @@
 </style></head>
 <body><main>
 <header><img src="assets/wmk/wmk-film-studio-64.png" alt="Logo WMK Film Studio"><div><h1>WMK Film Studio</h1><p>Roadmap de evolução • acompanhamento público e transparente</p><div class="meta"><span class="chip">Base Rust / FilmCraft</span><span class="chip">Documentação pt-BR</span><span class="chip">Última revisão: 15/11/2026</span></div></div></header>
-<div class="note"><strong>Como funciona:</strong> os estados abaixo são os marcos registrados neste arquivo, e não uma consulta em tempo real ao GitHub. Para alterar o progresso oficial, atualize o array <code>fases</code> no código HTML e faça commit. Filtros e anotações pessoais são armazenados apenas neste navegador.</div>
+<div class="note"><strong>Como funciona:</strong> os estados abaixo são os marcos registrados neste arquivo, e não uma consulta em tempo real ao GitHub. Para alterar o progresso oficial, atualize o array <code>fases</code> no código HTML e faça commit. Os filtros são aplicados nesta página; exporte CSV para compartilhar uma visão das tarefas.</div>
 <section class="stats" id="stats" aria-label="Resumo de andamento"></section>
 <div class="toolbar"><input id="q" type="search" placeholder="Buscar recurso, módulo ou entrega…" aria-label="Buscar"><select id="filter" aria-label="Filtrar por status"><option value="">Todos os status</option><option value="concluido">Concluído</option><option value="andamento">Em andamento</option><option value="planejado">Planejado</option></select><button id="export" type="button">Exportar status CSV</button><button id="reset" type="button">Limpar filtros</button></div>
 <section id="phases" aria-label="Fases do desenvolvimento"></section>
-<section class="note"><h2>Critérios para marcar como concluído</h2><ol><li>Código integrado na branch de distribuição.</li><li>Compilação e testes relevantes aprovados no GitHub Actions.</li><li>Recurso verificado manualmente no cenário de uso documentado.</li><li>Manual, CHANGELOG e release atualizados quando aplicável.</li></ol><p>O ZIP de estudos v0.20.1 foi compilado e publicado, mas a aplicação da nova identidade à distribuição depende de um novo build/release.</p></section>
+<section class="note"><h2>Entregas iniciais da v0.20.2</h2><p>Scripts de diagnóstico de Windows e organização de pastas de projeto estão sendo adicionados em <code>scripts/</code>. Essas ferramentas são utilitários independentes, ainda não integrados aos painéis do editor. Consulte <a href="manuais/04-ferramentas-wmk.md">o manual das ferramentas WMK</a>.</p></section><section class="note"><h2>Critérios para marcar como concluído</h2><ol><li>Código integrado na branch de distribuição.</li><li>Compilação e testes relevantes aprovados no GitHub Actions.</li><li>Recurso verificado manualmente no cenário de uso documentado.</li><li>Manual, CHANGELOG e release atualizados quando aplicável.</li></ol><p>O ZIP de estudos v0.20.1 foi compilado e publicado, mas a aplicação da nova identidade à distribuição depende de um novo build/release.</p></section>
 <div class="footer">Walney Moreira Klein — walneyk@hotmail.com<br>Fork de FilmCraft/ArtCraft — preservar NOTICE, ATTRIBUTION.md e licenças. <a href="manuais/README.md">Manuais</a> · <a href="https://github.com/WalneyNF/WMK-Film-Studio">GitHub</a> · <a href="https://github.com/WalneyNF/WMK-Film-Studio/releases">Downloads</a></div>
 </main><script>
 "use strict";
 const fases=[
-{nome:"Fase 1 — Base Windows e documentação",versao:"v0.20.1",tarefas:[
-["Compilação Windows x64 por GitHub Actions","concluido","Workflow de estudos executado com sucesso"],
-["ZIP experimental publicado no GitHub Releases","concluido","Release pública wmk-v0.20.1-estudos.1"],
-["README e manuais em português","andamento","Conteúdo preparado na branch WMK; aguarda integração na distribuição"],
-["Logo WMK no aplicativo e arquivo ICO","andamento","Recurso gráfico e preparação do ícone; exige novo build e verificação"],
-["Teste manual completo de importação e exportação","planejado","Verificar em Windows com mídia real"]]},
-{nome:"Fase 2 — Usabilidade e estabilidade",versao:"v0.21",tarefas:[
-["Galeria de projetos e recuperação","planejado","Validar fluxo existente e melhorar navegação"],
-["Painéis móveis e layouts persistentes","planejado","Perfis por tarefa e por usuário"],
-["Diagnóstico de GPU e modo econômico","planejado","Fallback seguro para GPUs antigas"],
-["Proxies e cache adaptativo","planejado","Prévia fluida com mídias pesadas"],
-["Testes de regressão com mídias reais","planejado","MP4, MOV, WebM, VFR e áudio multifaixa"]]},
-{nome:"Fase 3 — IA e produtividade",versao:"v0.22",tarefas:[
-["Painel de agentes integrado ao MCP","planejado","Registrar ações e permitir desfazer"],
-["Transcrição e legendas","planejado","Whisper opcional, revisão e exportação"],
-["Cortes assistidos e detecção de silêncio","planejado","Confirmação antes das mudanças"],
-["Integração com Ollama/Groq","planejado","Sem gravar chaves em logs"],
-["Modelos de exportação e processamento em lote","planejado","Fluxos repetíveis e relatório"]]},
-{nome:"Fase 4 — Estúdio expandido",versao:"v0.23+",tarefas:[
-["Gravação de tela e tutoriais","planejado","Captura com prévia"],
-["Biblioteca de templates e assets","planejado","Presets configuráveis"],
-["Integração com plugins externos","planejado","Arquitetura isolada e auditoria de licença"],
-["Aprimoramento e upscale de imagem","planejado","Avaliar custo de hardware/modelos"],
-["Pacotes Windows instalador e outras plataformas","planejado","Testes e assinatura quando possível"]]}
+{nome:"Fase 0 — Base instalada e validação",versao:"v0.20.1 / v0.20.2",tarefas:[
+["Build Windows x64 e ZIP via GitHub Actions","concluido","Compilação validada no GitHub; teste do usuário confirmou que o programa abre"],
+["Release pública experimental v0.20.1","concluido","Download do ZIP de estudos publicado em GitHub Releases"],
+["README e três manuais em português","concluido","Conteúdo integrado à branch main; revisão editorial é contínua"],
+["Roadmap interativo e exportação CSV","concluido","HTML estático integrado à main"],
+["Logo WMK e recurso ICO no EXE atualizado","andamento","Código e assets alterados; exige confirmar novo build e inspeção do EXE"],
+["Tradução integral de rótulos e erros","planejado","Auditar catálogo pt-br e mensagens internas; testes de placeholders"],
+["Teste ponta a ponta de importação, edição, salvamento e exportação","planejado","Registrar evidências por cenário, codec e hardware"],
+["Diagnóstico Windows para suporte","andamento","Script PowerShell de coleta local não invasiva nesta proposta"],
+["Criador de pastas para projetos WMK","andamento","Script PowerShell seguro com manifesto JSON nesta proposta"],
+["Publicar release 0.20.2 com ZIP e checksum","planejado","Somente após build novo e validação manual"]]},
+{nome:"Fase 1 — Projetos e interface",versao:"v0.21",tarefas:[
+["WMK Project Manager: galeria de projetos","planejado","Miniaturas, lista, metadados e projetos recentes"],
+["Tela inicial: novo, abrir, recuperar","planejado","Reusar infraestrutura existente antes de duplicar"],
+["Criar projeto guiado e templates","planejado","Assistente e presets editáveis em JSON"],
+["Modo Simples para iniciantes","planejado","Interface enxuta e tarefas orientadas"],
+["Modo Profissional","planejado","Expor todos os painéis e atalhos sem modificar engine"],
+["WMK Workspace Manager: painéis móveis","planejado","Partir do docking egui existente"],
+["Layouts personalizados e persistência JSON","planejado","Salvar e restaurar posições por perfil"],
+["WMK Learning Studio: professor interativo","planejado","Tutoriais contextualizados e exercícios práticos"],
+["Atalhos e comandos padronizados","planejado","Mapa de teclas, conflitos, documentação e ajuda contextual"]]},
+{nome:"Fase 2 — Estabilidade e desempenho",versao:"v0.21.1",tarefas:[
+["Diagnóstico de GPU e driver na interface","planejado","Inventário de hardware e avisos explicados em pt-BR"],
+["Perfil Econômico / Equilibrado / Profissional","planejado","Presets sem comprometer a qualidade do arquivo final"],
+["Modo gráfico seguro e fallback","planejado","Tratamento de falhas Vulkan/DirectX sem travar inicialização"],
+["WMK Proxy Manager: gerar mídia proxy","planejado","Relink para originais ao exportar"],
+["Cache adaptativo com limite de disco","planejado","Métricas, limpeza e políticas por projeto"],
+["Testes reais de MP4, MOV, WebM e mídia VFR","planejado","Corpus de mídia com licenças compatíveis"],
+["Testes Windows CI + smoke test por release","planejado","Matriz de importação, frames, áudio e exportação"],
+["Monitor de uso CPU/RAM/GPU e frames perdidos","planejado","Painel diagnosticável e exportação de relatórios"],
+["Compatibilidade ampliada de formatos de câmera","planejado","Validar 10-bit/4:2:2 e fallback software"],
+["Exportação robusta e presets YouTube/Shorts","planejado","Verificar duração, codec, sincronização e arquivo gerado"]]},
+{nome:"Fase 3 — Ferramentas audiovisuais WMK",versao:"v0.22",tarefas:[
+["WMK Subtitle Studio","planejado","Transcrever, ajustar linhas e estilos, SRT/VTT"],
+["WMK Video Enhancer","planejado","Antes/depois, cor, contraste, nitidez e redução de ruído"],
+["Estabilização de vídeo","planejado","Avaliar custo CPU/GPU e preservar enquadramento"],
+["WMK Audio Lab","planejado","Silêncios, normalização, limpeza, ducking e espectrograma"],
+["WMK Motion Graphics","planejado","Títulos, lower thirds, créditos, keyframes e templates JSON"],
+["WMK Screen Recorder","planejado","Captura de tela, microfone e webcam com permissões"],
+["WMK Batch Processor","planejado","Fila de conversão/exportação com logs e recuperação"],
+["WMK Asset Library","planejado","Biblioteca local de imagens, áudios, efeitos e fontes"],
+["Biblioteca de templates de edição","planejado","Aberturas, tutoriais, documentários e redes sociais"],
+["Janela de pré-visualização antes/depois","planejado","Comparação visual sincronizada e reset de efeitos"]]},
+{nome:"Fase 4 — IA e automação",versao:"v0.23",tarefas:[
+["WMK AI Editor: painel de comandos em português","planejado","Planejar ação, mostrar diff e solicitar confirmação"],
+["Integração MCP com motor existente","planejado","Camada de comando com limites, autorização e audit log"],
+["Ollama local e Groq","planejado","Provedores opcionais, quotas e indicadores de custos"],
+["OpenAI e Gemini opcionais","planejado","Chaves por usuário, nunca versionadas"],
+["Transcrição automática com Whisper","planejado","Download de modelos opt-in e CPU/GPU fallback"],
+["Detecção de silêncio e cortes sugeridos","planejado","Operações reversíveis com prévia"],
+["Organização automática de cenas","planejado","Metadados e marcadores sem apagar mídias"],
+["Legendas traduzidas com revisão humana","planejado","Preservar tempo e nomes próprios"],
+["Narração TTS com vozes locais","planejado","Integração progressiva às crates tts existentes"],
+["Registro e histórico de decisões dos agentes","planejado","JSON exportável e opção de desfazer"]]},
+{nome:"Fase 5 — Ecossistema e distribuição",versao:"v0.24+",tarefas:[
+["Gerenciador seguro de plugins","planejado","Processos isolados, permissões e versionamento"],
+["Plugins de efeitos e automações","planejado","API estável e documentação de integração"],
+["WMK Video Enhancer com upscale de IA","planejado","Modelos opcionais, avaliação de VRAM e tempo"],
+["Importação de projetos de outros editores","planejado","Pesquisar conversão segura e compatibilidade legal"],
+["Instalador MSI/ZIP portátil atualizados","planejado","Assinatura futura, versões e rollback"],
+["Atualizador WMK independente","planejado","Não apontar para update do produto original"],
+["Versão WebAssembly com escopo validado","planejado","Avaliar limitações WebGPU e arquivos grandes"],
+["Publicação reprodutível e checksums SHA-256","planejado","Assets do release gerados do commit exato"],
+["Documentação, screenshots WMK e tradução final","planejado","Manuais revisados por versão e changelog completo"]]}
 ];
 const names={concluido:"Concluído",andamento:"Em andamento",planejado:"Planejado"};
 const all=fases.flatMap(f=>f.tarefas);let find=id=>document.getElementById(id);

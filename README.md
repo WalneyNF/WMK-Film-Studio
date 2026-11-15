@@ -183,5 +183,10 @@ As marcas ArtCraft/FilmCraft dos autores originais não devem ser apresentadas c
 - [Edição, áudio e exportação](manuais/02-editor-e-exportacao.md)
 - [Desenvolvimento, compilação e manutenção](manuais/03-desenvolvimento.md)
 - [Roadmap interativo](roadmap.html) — consulte fases, progresso e critérios de conclusão.
+- [Ferramentas WMK para Windows](manuais/04-ferramentas-wmk.md) — diagnóstico de hardware e estrutura de pastas de projetos.
 
 O roadmap é um arquivo HTML estático. A seleção de filtros e as anotações locais ficam no navegador, não alteram o repositório. Alterações oficiais de status devem ser feitas em commits.
+
+### Início da evolução v0.20.2
+
+As propostas de Project Manager, Workspace Manager, Video Enhancer, Subtitle Studio, Audio Lab, Motion Graphics, Screen Recorder, Batch Processor, Proxy Manager, AI Editor, Asset Library e Learning Studio estão registradas no [roadmap](roadmap.html). A primeira entrega de código dessa fase inclui dois **utilitários independentes do editor**: `scripts/WMK-Diagnostico.ps1` e `scripts/WMK-Novo-Projeto.ps1`. Consulte o [manual específico](manuais/04-ferramentas-wmk.md). Não confunda essas ferramentas com recursos integrados à interface.
