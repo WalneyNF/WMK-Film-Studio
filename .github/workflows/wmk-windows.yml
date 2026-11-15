@@ -1,0 +1,47 @@
+name: WMK Film Studio - Windows x64
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/**'
+      - 'crates/**'
+      - 'Cargo.toml'
+      - 'Cargo.lock'
+      - '.github/workflows/wmk-windows.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Windows x64 ZIP
+    runs-on: windows-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Rust 1.95 MSVC
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.95.0'
+          targets: x86_64-pc-windows-msvc
+      - name: Cache
+        uses: Swatinem/rust-cache@v2
+      - name: Build release
+        run: cargo build --release --locked -p filmcraft -p filmcraft-cli
+      - name: Create ZIP
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force dist | Out-Null
+          Copy-Item target/release/filmcraft.exe dist/WMK-Film-Studio.exe
+          Copy-Item target/release/filmcraft-cli.exe dist/filmcraft-cli.exe
+          Copy-Item LICENSE-MIT, LICENSE-APACHE, NOTICE, ATTRIBUTION.md dist/
+          Compress-Archive -Path dist/* -DestinationPath WMK-Film-Studio-Windows-x64.zip -Force
+      - name: Upload executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: WMK-Film-Studio-Windows-x64
+          path: WMK-Film-Studio-Windows-x64.zip
+          retention-days: 30
