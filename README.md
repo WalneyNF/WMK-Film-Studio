@@ -1,6 +1,5 @@
-<p align="center">
-  <img src="docs/images/filmcraft-hero.png" alt="Interface do editor de vídeo FilmCraft, base do WMK Film Studio" width="900">
-</p>
+<p align="center"><img src="assets/wmk/wmk-film-studio-64.png" alt="Logo WMK Film Studio" width="128"></p>
+<p align="center"><img src="docs/images/filmcraft-hero.png" alt="Editor FilmCraft, base tecnológica da edição WMK" width="900"></p>
 
 # WMK Film Studio
 
@@ -14,6 +13,10 @@
 
 **Projeto WMK:** Walney Moreira Klein — walneyk@hotmail.com  
 **Código-base:** [FilmCraft, equipe ArtCraft](https://github.com/storytold/filmcraft). Veja [Créditos e licenças](#créditos-e-licenças).
+
+**[📥 Baixar versão experimental Windows](https://github.com/WalneyNF/WMK-Film-Studio/releases/tag/wmk-v0.20.1-estudos.1)** · **[📚 Manuais](manuais/README.md)** · **[🗺️ Roadmap interativo](roadmap.html)**
+
+> A logo nesta página é uma miniatura reduzida da arte oficial aprovada. Os ícones de compilação são gerados a partir dela; o original em alta resolução deve ser conservado como matriz da identidade.
 
 ## Índice
 
@@ -171,3 +174,14 @@ O **WMK Film Studio** é um fork de **[FilmCraft](https://github.com/storytold/f
 **Identidade e manutenção WMK:** Walney Moreira Klein — walneyk@hotmail.com.
 
 As marcas ArtCraft/FilmCraft dos autores originais não devem ser apresentadas como se fossem de propriedade da WMK. Créditos e avisos legais devem ser preservados em distribuições derivadas.
+
+
+## Documentação WMK e acompanhamento
+
+- [Índice dos manuais em português](manuais/README.md)
+- [Primeiros passos](manuais/01-primeiros-passos.md)
+- [Edição, áudio e exportação](manuais/02-editor-e-exportacao.md)
+- [Desenvolvimento, compilação e manutenção](manuais/03-desenvolvimento.md)
+- [Roadmap interativo](roadmap.html) — consulte fases, progresso e critérios de conclusão.
+
+O roadmap é um arquivo HTML estático. A seleção de filtros e as anotações locais ficam no navegador, não alteram o repositório. Alterações oficiais de status devem ser feitas em commits.

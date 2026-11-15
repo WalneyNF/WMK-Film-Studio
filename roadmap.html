@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WMK Film Studio — Roadmap de evolução</title>
+<style>
+:root{color-scheme:dark;--bg:#0b101b;--panel:#151d2c;--line:#2b3850;--fg:#eef3ff;--muted:#a9b7d0;--cyan:#52d8f1;--purple:#b28aff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#1c2754 0,transparent 43%),var(--bg);color:var(--fg);font:15px/1.6 system-ui,Segoe UI,sans-serif}main{max-width:1180px;margin:auto;padding:22px}header{display:flex;gap:18px;align-items:center;flex-wrap:wrap}header img{width:78px;height:78px;border-radius:16px}h1{font-size:clamp(24px,4vw,38px);margin:0}h2{font-size:20px}p{color:var(--muted);margin:4px 0 14px}a{color:var(--cyan)}.meta{display:flex;gap:10px;flex-wrap:wrap}.chip{border:1px solid var(--line);padding:4px 10px;border-radius:20px;background:#17223b;color:#cbdaf9}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:22px 0}.stat,.phase{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}.stat strong{font-size:25px;display:block}.stat small{color:var(--muted)}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.toolbar input,.toolbar select,.toolbar button{background:#17223b;border:1px solid #394c6d;border-radius:9px;color:white;padding:10px;font:inherit}.toolbar input{flex:1;min-width:200px}.toolbar button{cursor:pointer}.toolbar button:hover{border-color:var(--cyan)}.phase{margin:15px 0}.phase header{justify-content:space-between}.phase h2{margin:0}.tasks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:9px;margin-top:12px}.task{border:1px solid #30405c;border-radius:10px;padding:12px;background:#111929}.task b{display:block}.task small{display:block;color:var(--muted)}.status{display:inline-block;font-size:12px;padding:2px 8px;border-radius:20px;background:#293651;margin-top:8px}.concluido{color:#7fe2be}.andamento{color:#ffe090}.planejado{color:#b4c5e3}.bar{height:8px;background:#24324c;border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--purple))}.note{border-left:3px solid var(--purple);padding:12px;background:#141c2c;margin:22px 0;color:#d6dff1}.footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted)}.hidden{display:none!important}
+</style></head>
+<body><main>
+<header><img src="assets/wmk/wmk-film-studio-64.png" alt="Logo WMK Film Studio"><div><h1>WMK Film Studio</h1><p>Roadmap de evolução • acompanhamento público e transparente</p><div class="meta"><span class="chip">Base Rust / FilmCraft</span><span class="chip">Documentação pt-BR</span><span class="chip">Última revisão: 15/11/2026</span></div></div></header>
+<div class="note"><strong>Como funciona:</strong> os estados abaixo são os marcos registrados neste arquivo, e não uma consulta em tempo real ao GitHub. Para alterar o progresso oficial, atualize o array <code>fases</code> no código HTML e faça commit. Filtros e anotações pessoais são armazenados apenas neste navegador.</div>
+<section class="stats" id="stats" aria-label="Resumo de andamento"></section>
+<div class="toolbar"><input id="q" type="search" placeholder="Buscar recurso, módulo ou entrega…" aria-label="Buscar"><select id="filter" aria-label="Filtrar por status"><option value="">Todos os status</option><option value="concluido">Concluído</option><option value="andamento">Em andamento</option><option value="planejado">Planejado</option></select><button id="export" type="button">Exportar status CSV</button><button id="reset" type="button">Limpar filtros</button></div>
+<section id="phases" aria-label="Fases do desenvolvimento"></section>
+<section class="note"><h2>Critérios para marcar como concluído</h2><ol><li>Código integrado na branch de distribuição.</li><li>Compilação e testes relevantes aprovados no GitHub Actions.</li><li>Recurso verificado manualmente no cenário de uso documentado.</li><li>Manual, CHANGELOG e release atualizados quando aplicável.</li></ol><p>O ZIP de estudos v0.20.1 foi compilado e publicado, mas a aplicação da nova identidade à distribuição depende de um novo build/release.</p></section>
+<div class="footer">Walney Moreira Klein — walneyk@hotmail.com<br>Fork de FilmCraft/ArtCraft — preservar NOTICE, ATTRIBUTION.md e licenças. <a href="manuais/README.md">Manuais</a> · <a href="https://github.com/WalneyNF/WMK-Film-Studio">GitHub</a> · <a href="https://github.com/WalneyNF/WMK-Film-Studio/releases">Downloads</a></div>
+</main><script>
+"use strict";
+const fases=[
+{nome:"Fase 1 — Base Windows e documentação",versao:"v0.20.1",tarefas:[
+["Compilação Windows x64 por GitHub Actions","concluido","Workflow de estudos executado com sucesso"],
+["ZIP experimental publicado no GitHub Releases","concluido","Release pública wmk-v0.20.1-estudos.1"],
+["README e manuais em português","andamento","Conteúdo preparado na branch WMK; aguarda integração na distribuição"],
+["Logo WMK no aplicativo e arquivo ICO","andamento","Recurso gráfico e preparação do ícone; exige novo build e verificação"],
+["Teste manual completo de importação e exportação","planejado","Verificar em Windows com mídia real"]]},
+{nome:"Fase 2 — Usabilidade e estabilidade",versao:"v0.21",tarefas:[
+["Galeria de projetos e recuperação","planejado","Validar fluxo existente e melhorar navegação"],
+["Painéis móveis e layouts persistentes","planejado","Perfis por tarefa e por usuário"],
+["Diagnóstico de GPU e modo econômico","planejado","Fallback seguro para GPUs antigas"],
+["Proxies e cache adaptativo","planejado","Prévia fluida com mídias pesadas"],
+["Testes de regressão com mídias reais","planejado","MP4, MOV, WebM, VFR e áudio multifaixa"]]},
+{nome:"Fase 3 — IA e produtividade",versao:"v0.22",tarefas:[
+["Painel de agentes integrado ao MCP","planejado","Registrar ações e permitir desfazer"],
+["Transcrição e legendas","planejado","Whisper opcional, revisão e exportação"],
+["Cortes assistidos e detecção de silêncio","planejado","Confirmação antes das mudanças"],
+["Integração com Ollama/Groq","planejado","Sem gravar chaves em logs"],
+["Modelos de exportação e processamento em lote","planejado","Fluxos repetíveis e relatório"]]},
+{nome:"Fase 4 — Estúdio expandido",versao:"v0.23+",tarefas:[
+["Gravação de tela e tutoriais","planejado","Captura com prévia"],
+["Biblioteca de templates e assets","planejado","Presets configuráveis"],
+["Integração com plugins externos","planejado","Arquitetura isolada e auditoria de licença"],
+["Aprimoramento e upscale de imagem","planejado","Avaliar custo de hardware/modelos"],
+["Pacotes Windows instalador e outras plataformas","planejado","Testes e assinatura quando possível"]]}
+];
+const names={concluido:"Concluído",andamento:"Em andamento",planejado:"Planejado"};
+const all=fases.flatMap(f=>f.tarefas);let find=id=>document.getElementById(id);
+function draw(){let q=find("q").value.toLocaleLowerCase("pt-BR"),filter=find("filter").value;let counts={concluido:0,andamento:0,planejado:0};all.forEach(t=>counts[t[1]]++);find("stats").innerHTML='<div class="stat"><strong>'+all.length+'</strong><small>Entregas previstas</small></div>'+Object.keys(counts).map(k=>'<div class="stat"><strong>'+counts[k]+'</strong><small>'+names[k]+'</small></div>').join("");find("phases").innerHTML=fases.map(f=>{let ts=f.tarefas.filter(t=>(!filter||t[1]===filter)&&(!q||(f.nome+" "+t.join(" ")).toLocaleLowerCase("pt-BR").includes(q)));if(!ts.length)return "";let n=f.tarefas.filter(t=>t[1]==="concluido").length,pr=Math.round(100*n/f.tarefas.length);return '<article class="phase"><header><h2>'+f.nome+'</h2><span class="chip">'+f.versao+' · '+pr+'% concluído</span></header><div class="bar" aria-label="'+pr+'% de tarefas concluídas"><i style="width:'+pr+'%"></i></div><div class="tasks">'+ts.map(t=>'<div class="task"><b>'+t[0]+'</b><small>'+t[2]+'</small><span class="status '+t[1]+'">'+names[t[1]]+'</span></div>').join("")+'</div></article>'}).join("")||"<p>Nenhum item encontrado.</p>"}
+find("q").addEventListener("input",draw);find("filter").addEventListener("change",draw);
+find("reset").addEventListener("click",()=>{find("q").value="";find("filter").value="";draw()});
+find("export").addEventListener("click",()=>{let rows=[["Fase","Versão","Entrega","Status","Detalhe"],...fases.flatMap(f=>f.tarefas.map(t=>[f.nome,f.versao,t[0],names[t[1]],t[2]]))];let csv="\uFEFF"+rows.map(row=>row.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(";")).join("\r\n");let url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));let a=document.createElement("a");a.href=url;a.download="WMK-Film-Studio-roadmap.csv";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});draw();
+</script></body></html>

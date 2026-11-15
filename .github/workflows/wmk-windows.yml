@@ -11,6 +11,8 @@ on:
       - 'Cargo.lock'
       - '.github/workflows/wmk-windows.yml'
       - 'README.md'
+      - 'assets/wmk/**'
+      - 'scripts/gerar-icone-wmk.py'
   pull_request:
     branches: [main]
 
@@ -32,6 +34,8 @@ jobs:
           targets: x86_64-pc-windows-msvc
       - name: Cache
         uses: Swatinem/rust-cache@v2
+      - name: Gerar icone Windows WMK
+        run: python scripts/gerar-icone-wmk.py
       - name: Build release
         run: cargo build --release --locked -p filmcraft -p filmcraft-cli
       - name: Create ZIP

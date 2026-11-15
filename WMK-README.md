@@ -19,7 +19,7 @@ O projeto já inclui português brasileiro: `crates/ui-egui/src/i18n/pt-br.tsv`.
 
 ## Identidade
 
-Proposta de produto: **WMK Film Studio**. Créditos WMK solicitados: Walney Moreira Klein — walneyk@hotmail.com. Preservar créditos existentes em `NOTICE` e `ATTRIBUTION.md`. A nova logo aprovada deve ser convertida para ICO e PNG de múltiplas resoluções antes de substituir os recursos existentes.
+Proposta de produto: **WMK Film Studio**. Créditos WMK solicitados: Walney Moreira Klein — walneyk@hotmail.com. Preservar créditos existentes em `NOTICE` e `ATTRIBUTION.md`. A logo WMK reduzida está em `assets/wmk/`; o workflow Windows executa `scripts/gerar-icone-wmk.py` antes da compilação, embutindo um ICO derivado. Para distribuição definitiva, atualizar a matriz para alta resolução.
 
 ## Verificações locais
 
