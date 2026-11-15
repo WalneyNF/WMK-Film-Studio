@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/wmk/wmk-film-studio-64.png" alt="Logo WMK Film Studio" width="128"></p>
+<p align="center"><img src="assets/wmk/wmk-film-studio-64.png" alt="Logo oficial WMK Film Studio" width="180"></p>
 <p align="center"><img src="docs/images/filmcraft-hero.png" alt="Editor FilmCraft, base tecnológica da edição WMK" width="900"></p>
 
 # WMK Film Studio
