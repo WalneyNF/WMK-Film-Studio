@@ -930,7 +930,7 @@ pub const MENUS: [&str; 9] = ["File", "Edit", "Clip", "Sequence", "Markers", "Gr
 /// Labels only the native macOS app menu shows, with no command in the menu tree behind them: the
 /// Settings submenu and the predefined Hide, Hide Others and Quit items. They are translated through
 /// the catalogs like menu labels (`apps/filmcraft/src/native_menu.rs`).
-pub const NATIVE_APP_MENU: [&str; 4] = ["Settings", "Hide FilmCraft", "Hide Others", "Quit FilmCraft"];
+pub const NATIVE_APP_MENU: [&str; 4] = ["Settings", "Hide WMK Film Studio", "Hide Others", "Quit WMK Film Studio"];
 
 pub fn menu_items(app: &FilmcraftApp) -> Vec<MenuItem> {
     let mut v = menu_items_for(&app.session);
@@ -1380,7 +1380,9 @@ fn hint_at_pointer(ui: &egui::Ui, r: &egui::Response, hint: String) {
 fn menu_entry(ui: &mut egui::Ui, it: &MenuItem, auto: &mut crate::automation::Registry, labels: &filmcraft_engine::settings::LabelPrefs) -> bool {
     // Checkmarks and label swatches each occupy the same left gutter.
     let swatch = label_menu_swatch(&it.id, labels);
-    let label = if it.checked.is_some() || swatch.is_some() { format!("{GUTTER}{}", it.label) } else { it.label.clone() };
+    // Manter os IDs e chaves i18n originais; trocar somente a marca mostrada.
+    let visual = it.label.replace("FilmCraft", "WMK Film Studio");
+    let label = if it.checked.is_some() || swatch.is_some() { format!("{GUTTER}{visual}") } else { visual };
     let mut b = egui::Button::new(label);
     if let Some(s) = &it.shortcut {
         b = b.shortcut_text(shortcut_text(s));
@@ -1390,7 +1392,7 @@ fn menu_entry(ui: &mut egui::Ui, it: &MenuItem, auto: &mut crate::automation::Re
     if let Some(hint) = crate::links::menu_hint(&it.id) {
         hint_at_pointer(ui, &r, hint);
     }
-    auto.add(&format!("menu.{}", it.id), r.rect, &it.label);
+    auto.add(&format!("menu.{}", it.id), r.rect, &it.label.replace("FilmCraft", "WMK Film Studio"));
     if let Some(color) = swatch {
         paint_swatch(ui, r.rect, color);
     }

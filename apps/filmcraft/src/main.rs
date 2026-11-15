@@ -107,17 +107,17 @@ fn main() -> eframe::Result {
             return Ok(());
         }
         Ok(Cli::Version) => {
-            tell(&format!("filmcraft {}\n", env!("CARGO_PKG_VERSION")), false);
+            tell(&format!("WMK Film Studio {}\n", env!("CARGO_PKG_VERSION")), false);
             return Ok(());
         }
         Err(e) => {
-            tell(&format!("filmcraft: {e}\n\n{}", args::USAGE), true);
+            tell(&format!("WMK Film Studio: {e}\n\n{}", args::USAGE), true);
             std::process::exit(2);
         }
     };
     let data_root = launch.data_dir.clone().or_else(default_data_dir);
     let log_dir = data_root.as_ref().map(|d| d.join(logging::LOG_DIR));
-    log::info!("FilmCraft {} ({} {})", env!("CARGO_PKG_VERSION"), std::env::consts::OS, std::env::consts::ARCH);
+    log::info!("WMK Film Studio {} ({} {})", env!("CARGO_PKG_VERSION"), std::env::consts::OS, std::env::consts::ARCH);
     // The log file lives next to the crash logs; opened after the arguments, so `--help`,
     // `--version` and usage errors leave no file behind. Records logged until now go in first.
     let mut log_file = None;
@@ -155,7 +155,7 @@ fn main() -> eframe::Result {
         log::error!("{msg}");
         filmcraft_ui_egui::crash::record(&msg);
         graphics.abandon();
-        let _ = rfd::MessageDialog::new().set_title("FilmCraft").set_description(&msg).set_level(rfd::MessageLevel::Error).show();
+        let _ = rfd::MessageDialog::new().set_title("WMK Film Studio").set_description(&msg).set_level(rfd::MessageLevel::Error).show();
         std::process::exit(1);
     }
     // The GPU export renderer creates its own wgpu instance with every backend; after a start
@@ -171,7 +171,7 @@ fn main() -> eframe::Result {
         graphics::apply(&mut options, graphics.mode(), backend_override);
         let app_created = Arc::new(AtomicBool::new(false));
         let creator = app_creator(launch.clone(), graphics.clone(), Arc::clone(&app_created));
-        let run = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| eframe::run_native("FilmCraft", options, creator)));
+        let run = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| eframe::run_native("WMK Film Studio", options, creator)));
         let app_created = app_created.load(Ordering::Relaxed);
         let result = match run {
             Ok(result) => result,
@@ -234,7 +234,7 @@ fn main() -> eframe::Result {
         }
         log::error!("{msg}");
         filmcraft_ui_egui::crash::record(&msg);
-        let _ = rfd::MessageDialog::new().set_title("FilmCraft").set_description(&msg).set_level(rfd::MessageLevel::Error).show();
+        let _ = rfd::MessageDialog::new().set_title("WMK Film Studio").set_description(&msg).set_level(rfd::MessageLevel::Error).show();
     }
     started
 }
@@ -250,7 +250,7 @@ fn relaunch(mode: graphics::Mode) -> std::io::Result<i32> {
         Some(image) => std::path::PathBuf::from(image),
         None => std::env::current_exe()?,
     };
-    log::warn!("starting FilmCraft again in graphics mode {}", mode.name());
+    log::warn!("starting WMK Film Studio again in graphics mode {}", mode.name());
     let status = std::process::Command::new(exe).args(relaunch_args(std::env::args_os().skip(1), mode)).env(RELAUNCHED, "1").status()?;
     Ok(status.code().unwrap_or(1))
 }
@@ -285,7 +285,7 @@ fn panic_text(panic: &(dyn std::any::Any + Send)) -> &str {
 fn native_options(agent: bool) -> eframe::NativeOptions {
     eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
-            .with_title("FilmCraft")
+            .with_title("WMK Film Studio")
             .with_inner_size([1600.0, 980.0])
             .with_min_inner_size([900.0, 560.0])
             .with_drag_and_drop(true)
@@ -373,7 +373,7 @@ fn app_creator(launch: Launch, graphics: graphics::GraphicsStart, created: Arc<A
             }
         }
         let mut app = FilmcraftApp::new(session);
-        app.set_startup_update_check(true);
+        app.set_startup_update_check(false); // WMK: evitar consultar o atualizador do projeto original
         app.graphics_notice = notice;
         if recover == Some(false) {
             app.dialog = None;
@@ -602,7 +602,7 @@ fn run_dialog_off_thread(dialog: filmcraft_ui_egui::native_dialogs::FileDialog) 
     use filmcraft_ui_egui::native_dialogs::FileDialog;
     let t = |s: &str| filmcraft_ui_egui::i18n::t(s).to_string();
     let media = t("Media");
-    let project = t("FilmCraft Project");
+    let project = t("FilmCraft Project").replace("FilmCraft", "WMK Film Studio");
     let all_files = t("All files");
     let all_files_exts = file_filters::all_files();
     let project_exts = project_patterns();

@@ -23,7 +23,7 @@ mod windows {
             .set("ProductName", "WMK Film Studio")
             .set("FileDescription", "WMK Film Studio - Editor de video")
             .set("LegalCopyright", "Copyright (c) the FilmCraft contributors. MIT OR Apache-2.0.")
-            .set("OriginalFilename", "filmcraft.exe")
+            .set("OriginalFilename", "WMK-Film-Studio.exe")
             .set("InternalName", "filmcraft");
         if let Err(e) = res.compile() {
             if std::env::var_os("FILMCRAFT_REQUIRE_WINRES").is_some() {
