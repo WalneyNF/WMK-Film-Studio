@@ -471,6 +471,7 @@ fn about_tab(app: &mut FilmcraftApp, ui: &mut egui::Ui) {
     ui.add_space(6.0);
     ui.heading("WMK Film Studio");
     ui.label("Walney Moreira Klein — walneyk@hotmail.com");
+    ui.label("Base original: FilmCraft / ArtCraft (MIT OU Apache-2.0)");
     ui.label(tlf!("Version {version}", version = env!("CARGO_PKG_VERSION")));
     ui.label("Editor de vídeo não linear baseado no projeto de código aberto FilmCraft / ArtCraft.");
     ui.add_space(10.0);

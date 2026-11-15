@@ -185,3 +185,10 @@ As marcas ArtCraft/FilmCraft dos autores originais não devem ser apresentadas c
 - [Roadmap interativo](roadmap.html) — consulte fases, progresso e critérios de conclusão.
 
 O roadmap é um arquivo HTML estático. A seleção de filtros e as anotações locais ficam no navegador, não alteram o repositório. Alterações oficiais de status devem ser feitas em commits.
+
+
+### Identidade da aplicação
+
+A versão em desenvolvimento passou a exibir **WMK Film Studio** no título da janela, tela Sobre, títulos de diálogos, versão Web e metadados de pacotes. Os nomes internos `filmcraft-*` e o formato `.fcproj` foram conservados por compatibilidade. [Leia os detalhes](manuais/05-identidade-e-compatibilidade.md).
+
+O lançamento público antigo pode manter ícones e títulos anteriores até ser publicado um novo ZIP resultante do código WMK.

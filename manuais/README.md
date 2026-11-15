@@ -12,3 +12,5 @@ Acompanhe as fases no [roadmap.html](../roadmap.html) (abra no navegador).
 Consulte também as fontes do projeto-base em [docs/](../docs/), mantidas para precisão técnica.
 
 **WMK:** Walney Moreira Klein — walneyk@hotmail.com. Créditos do FilmCraft/ArtCraft preservados em `NOTICE` e `ATTRIBUTION.md`.
+
+- [05 — Identidade e compatibilidade WMK](05-identidade-e-compatibilidade.md) — onde a nova marca é aplicada e quais nomes técnicos devem permanecer.

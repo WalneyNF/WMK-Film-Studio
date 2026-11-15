@@ -127,8 +127,8 @@ mod tests {
 
     #[test]
     fn urls_follow_the_artcraft_scheme() {
-        assert_eq!(APP_PAGE, format!("{WEBSITE}/apps/{APP}"));
-        assert_eq!(GITHUB, format!("https://github.com/storytold/{APP}"));
+        assert_eq!(APP_PAGE, "https://github.com/WalneyNF/WMK-Film-Studio/releases");
+        assert_eq!(GITHUB, "https://github.com/WalneyNF/WMK-Film-Studio");
         assert!(ALL.iter().all(|(id, _, u)| id.starts_with("help.") && u.starts_with("https://")));
         assert_eq!(url_for("help.discord"), Some(DISCORD));
         assert_eq!(url_for("help.nope"), None);
