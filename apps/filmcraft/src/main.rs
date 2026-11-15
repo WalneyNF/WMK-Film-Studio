@@ -57,9 +57,9 @@ const APP_ID: &str = "ai.storyteller.filmcraft";
 /// size of other Dock icons; Windows and Linux get the full-bleed tile.
 fn app_icon() -> egui::IconData {
     #[cfg(target_os = "macos")]
-    let png: &[u8] = include_bytes!("../../../assets/app-icon/filmcraft-macos-512.png");
+    let png: &[u8] = include_bytes!("../../../assets/wmk/wmk-film-studio-64.png");
     #[cfg(not(target_os = "macos"))]
-    let png: &[u8] = include_bytes!("../../../assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png");
+    let png: &[u8] = include_bytes!("../../../assets/wmk/wmk-film-studio-64.png");
     eframe::icon_data::from_png_bytes(png).unwrap_or_default()
 }
 
@@ -75,7 +75,7 @@ fn tell(text: &str, error: bool) {
     #[cfg(all(target_os = "windows", not(debug_assertions)))]
     {
         let level = if error { rfd::MessageLevel::Error } else { rfd::MessageLevel::Info };
-        let _ = rfd::MessageDialog::new().set_level(level).set_title("FilmCraft").set_description(text).show();
+        let _ = rfd::MessageDialog::new().set_level(level).set_title("WMK Film Studio").set_description(text).show();
     }
 }
 
