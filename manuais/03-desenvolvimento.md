@@ -50,3 +50,7 @@ Leia [docs/agents.md](../docs/agents.md), [docs/control-protocol.md](../docs/con
 
 ## 7. Política de evolução
 Acompanhe tarefas no [roadmap HTML](../roadmap.html). Só marque como concluído quando houver código integrado e teste associado. A fase inicial pública foi compilada e publicada, porém não implica validação de todos os recursos.
+
+## 8. Ferramentas de estudo da v0.20.2
+
+Os primeiros utilitários independentes estão em `scripts/WMK-Diagnostico.ps1` e `scripts/WMK-Novo-Projeto.ps1`. Leia [Manual 04](04-ferramentas-wmk.md). Eles não devem ser confundidos com ferramentas embutidas no binário Rust. O workflow Windows realiza testes de criação do projeto sem sobrepor arquivos existentes.

@@ -12,3 +12,5 @@ Acompanhe as fases no [roadmap.html](../roadmap.html) (abra no navegador).
 Consulte também as fontes do projeto-base em [docs/](../docs/), mantidas para precisão técnica.
 
 **WMK:** Walney Moreira Klein — walneyk@hotmail.com. Créditos do FilmCraft/ArtCraft preservados em `NOTICE` e `ATTRIBUTION.md`.
+
+- [04 — Ferramentas WMK para Windows](04-ferramentas-wmk.md) — diagnóstico de hardware e criador de pastas de projetos.
